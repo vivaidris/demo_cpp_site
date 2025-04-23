@@ -58,49 +58,49 @@ static bool login(const string& inputUser, const string& inputPass){
 };
 
 int main() {
-    std::string action;
+    string action;
 
-    std::cout << "Welcome to ABC website!\n";
-    std::cout << "Would you like to (register) or (login)? ";
-    std::cin >> action;
+    cout << "Welcome to ABC website!\n";
+    cout << "Would you like to (register) or (login)? ";
+    cin >> action;
 
     if (action == "register") {
         UserAccount user;
 
-        std::cout << "Please enter your username: ";
-        std::cin >> user.username;
+        cout << "Please enter your username: ";
+        cin >> user.username;
 
-        std::cout << "Please enter your email: ";
-        std::cin >> user.email;
+        cout << "Please enter your email: ";
+        cin >> user.email;
 
-        std::cout << "Please enter your password: ";
-        std::cin >> user.password;
+        cout << "Please enter your password: ";
+        cin >> user.password;
 
         if (user.password == "password" || user.password == "1234") {
-            std::cout << "Please enter a stronger password: ";
-            std::cin >> user.password;
+            cout << "Please enter a stronger password: ";
+            cin >> user.password;
         }
 
-        std::cout << "Enter a two-step verification PIN: ";
-        std::cin >> user.pin;
+        cout << "Enter a two-step verification PIN: ";
+        cin >> user.pin;
 
         user.saveToFile();
-        std::cout << "Registration complete!\n";
+        cout << "Registration complete!\n";
     } 
     else if (action == "login") {
-        std::string inputUser, inputPass;
-        std::cout << "Username: ";
-        std::cin >> inputUser;
-        std::cout << "Password: ";
-        std::cin >> inputPass;
+        string inputUser, inputPass;
+        cout << "Username: ";
+        cin >> inputUser;
+        cout << "Password: ";
+        cin >> inputPass;
 
         bool success = login(inputUser, inputPass);
         if (!success) {
-            std::cout << "Try again later.\n";
+            cout << "Try again later.\n";
         }
     } 
     else {
-        std::cout << "Invalid option. Please restart the program.\n";
+        cout << "Invalid option. Please restart the program.\n";
     }
 
     return 0;
