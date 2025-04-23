@@ -15,7 +15,7 @@ class UserAccount {
         string pin;
 
         void saveToFile(){
-            std::ofstream outFile("C:\\Users\\Owner\\OneDrive - Mariam Al Batool School\\Desktop\\gameEngine\\user_data.txt", std::ios::app);
+            std::ofstream outFile("user_data.txt", std::ios::app);
 
             if(outFile.is_open()){
                 outFile << username << ',' << email << ',' << password << ',' << pin << '\n'; 
