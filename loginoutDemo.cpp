@@ -3,10 +3,12 @@
 #include <string>
 #include <sstream>
 
+//using these to avoid std:: prefix for common std types
 using std::cout;
 using std::cin;
 using std::string;
 
+//creates a class to hold user data
 class UserAccount {
     public:
         string username;
@@ -14,6 +16,7 @@ class UserAccount {
         string password;
         string pin;
 
+        //saves user data to an external txt file
         void saveToFile(){
             std::ofstream outFile("user_data.txt", std::ios::app);
 
@@ -28,6 +31,7 @@ class UserAccount {
         }
 };
 
+//allows user to login with their username and password, checks if they are correct
 static bool login(const string& inputUser, const string& inputPass){
     std::ifstream inFile("user_data.txt");
 
@@ -47,7 +51,6 @@ static bool login(const string& inputUser, const string& inputPass){
         getline(ss, pin, ',');
 
         if(inputUser == user && inputPass == pass){
-            cout << "Welcome " << user;
             return true;
         }
 
@@ -57,8 +60,10 @@ static bool login(const string& inputUser, const string& inputPass){
     return false;
 };
 
+//function to either let user register or login to their account
 int main() {
     string action;
+    string choice;
 
     cout << "Welcome to ABC website!\n";
     cout << "Would you like to (register) or (login)? ";
@@ -97,6 +102,29 @@ int main() {
         bool success = login(inputUser, inputPass);
         if (!success) {
             cout << "Try again later.\n";
+        }
+        while(success){
+            cout << "Welcome to ABC Website." << '\n';
+            cout << "1. View account information." << '\n';
+            cout << "2. Rename or change account information." << '\n';
+            cout << "3. Logout." << '\n';;
+            cout << "Choose an option: ";
+            cin >> choice;
+
+            if(choice == "1"){
+                //Implement show information 
+            }
+            else if(choice == "2"){
+                //Implement feature to change account information
+            }
+            else if(choice == "3"){
+                cout << "Goodbye!";
+                break;
+            }
+            else{
+                cout << "Invalid choice. Try again.";
+            }
+
         }
     } 
     else {
