@@ -18,10 +18,7 @@ class UserAccount {
             std::ofstream outFile("C:\\Users\\Owner\\OneDrive - Mariam Al Batool School\\Desktop\\gameEngine\\user_data.txt", std::ios::app);
 
             if(outFile.is_open()){
-                outFile << "Username: " << username << '\n';
-                outFile << "Email: " << email << '\n';
-                outFile << "Password: " << password << '\n';
-                outFile << "PIN: " << pin << '\n';
+                outFile << username << ',' << email << ',' << password << ',' << pin << '\n'; 
                 outFile.close();
                 cout << "User info saved to file" << '\n';
             }
@@ -60,54 +57,51 @@ static bool login(const string& inputUser, const string& inputPass){
     return false;
 };
 
-int main(){
-    
-    UserAccount user;
-    string answer;
+int main() {
+    std::string action;
 
-    cout << "Welcome to my website!" << '\n';
-    cout << "Since you are new, please enter your username: ";
-    cin >> user.username;
+    std::cout << "Welcome to ABC website!\n";
+    std::cout << "Would you like to (register) or (login)? ";
+    std::cin >> action;
 
-    cout << "Please enter your email: ";
-    cin >> user.email;
+    if (action == "register") {
+        UserAccount user;
 
-    cout << "Please enter your password: ";
-    cin >> user.password;
+        std::cout << "Please enter your username: ";
+        std::cin >> user.username;
 
-    if(user.password == "password" || user.password == "1234"){
-        cout << "Please enter a new password, your previous password was to weak: ";
-        cin >> user.password;
-    }
+        std::cout << "Please enter your email: ";
+        std::cin >> user.email;
 
-    cout << "Would you like to view your current password (Y/N): ";
-    cin >> answer;
+        std::cout << "Please enter your password: ";
+        std::cin >> user.password;
 
-    if(answer == "Y" || answer == "yes" ){
-        cout << user.password << '\n';
-    }
-    else{}
-
-    cout << "Would you like to change your password before continuing? (Y/N): ";
-    cin >> answer;
-
-    if(answer == "Y" || answer == "yes"){
-        cout << "Please enter a different password";
-        cin >> user.password;
-
-        if(user.password == "password" || user.password == "1234"){
-            cout << "Please enter a new password, your previous password was to weak: ";
-            cin >> user.password;
+        if (user.password == "password" || user.password == "1234") {
+            std::cout << "Please enter a stronger password: ";
+            std::cin >> user.password;
         }
+
+        std::cout << "Enter a two-step verification PIN: ";
+        std::cin >> user.pin;
+
+        user.saveToFile();
+        std::cout << "Registration complete!\n";
+    } 
+    else if (action == "login") {
+        std::string inputUser, inputPass;
+        std::cout << "Username: ";
+        std::cin >> inputUser;
+        std::cout << "Password: ";
+        std::cin >> inputPass;
+
+        bool success = login(inputUser, inputPass);
+        if (!success) {
+            std::cout << "Try again later.\n";
+        }
+    } 
+    else {
+        std::cout << "Invalid option. Please restart the program.\n";
     }
-    else{}
-
-    cout << "Please enter a two-step verification pin: ";
-    cin >> user.pin;
-
-    user.saveToFile();
-
-    cout << "Thank you for signing up to ABC website";
 
     return 0;
 }
