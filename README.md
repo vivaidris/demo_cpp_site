@@ -1,7 +1,7 @@
 # ** C++ Demo Site/Game **
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://travis-ci.org/vivaidris/demo_cpp_site.svg?branch=main)](https://travis-ci.org/vivaidris/demo_cpp_site)
+![C++ Build](https://github.com/your_username/your_repo/actions/workflows/build.yml/badge.svg)
 
 ## **Table of Contents**
 
