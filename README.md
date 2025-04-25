@@ -8,4 +8,4 @@
 - [Description](#description)
 
 - ## **Description**
-  Hello and welcome to my first ever project. I've made my project mainly for experimental and learning reasons, and maybe I will continue this project for who knows how long. This project is very simple: It's main reason is to control login/logout/register. It allows users to also change their account information and view it.
+  Hello and welcome to my first ever project. I've made my project mainly for experimental and learning reasons, and maybe I will continue this project for who knows how long. This project is very simple: The project's main reason is to control login/logout/register. It allows users to also change their account information and view it.
