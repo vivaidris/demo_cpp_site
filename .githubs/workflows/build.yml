@@ -1,0 +1,25 @@
+name: C++ Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y g++
+
+    - name: Build
+      run: |
+        g++ demo_site.cpp dependencies/change_account.cpp dependencies/data_manager.cpp dependencies/view_account.cpp -I dependencies -static -o demo_site
+
+    - name: Run
+      run: ./demo_site < /dev/null
