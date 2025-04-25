@@ -1,8 +1,0 @@
-language: cpp
-compiler:
-  - gcc
-
-script:
-  - g++ demo_site.cpp dependencies/change_account.cpp dependencies/data_manager.cpp dependencies/view_account.cpp -I dependencies -static -o demo_site
-  - ./demo_site
-
