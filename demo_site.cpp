@@ -66,17 +66,59 @@ int main() {
     
             while (loggedIn) {
                 cout << "Welcome to ABC Website." << '\n';
-                cout << "1. View account information." << '\n';
-                cout << "2. Rename or change account information." << '\n';
+                cout << "1. Continue." << '\n';
+                cout << "2. Settings." << '\n';
                 cout << "3. Logout." << '\n';
                 cout << "Choose an option: ";
                 cin >> choice;
     
                 if(choice == "1"){
-                    viewAccountInfo(&user);
+                    //Add in continue feature
                 }
-                else if(choice == "2"){
-                    changeAccountInfo(&user);
+                else if (choice == "2") {
+                    string settingsChoice;
+                    bool inSettings = true;
+                
+                    while (inSettings) {
+                        cout << "\n--- Settings ---\n";
+                        cout << "1. View account information\n";
+                        cout << "2. Change account information\n";
+                        cout << "Danger Zone!" << '\n';
+                        cout << "3. Delete account\n";
+                        cout << "4. Back to main menu\n";
+                        cout << "Select an option: ";
+                        cin >> settingsChoice;
+                
+                        if (settingsChoice == "1") {
+                            viewAccountInfo(&user);
+                        }
+                        else if (settingsChoice == "2") {
+                            changeAccountInfo(&user);
+                        }
+                        else if (settingsChoice == "3") {
+                            cout << "Are you sure you want to delete your account? (yes/no): ";
+                            string confirm;
+                            cin >> confirm;
+                
+                            if (confirm == "yes") {
+                                users.erase(std::remove_if(users.begin(), users.end(), [&](const UserAccount& u) {
+                                    return u.username == user.username && u.password == user.password;
+                                }), users.end());
+                
+                                saveUsersToFile(users, "user_data.txt");
+                                cout << "Account deleted successfully.\n";
+                                break; // Exit main loop
+                            } else {
+                                cout << "Deletion cancelled.\n";
+                            }
+                        }
+                        else if (settingsChoice == "4") {
+                            inSettings = false;
+                        }
+                        else {
+                            cout << "Invalid option. Try again.\n";
+                        }
+                    }
                 }
                 else if(choice == "3"){
                     cout << "Goodbye!\n";
