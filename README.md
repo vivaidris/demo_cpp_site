@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 ![C++ CI](https://img.shields.io/badge/C++-CI-blue?logo=cplusplus&logoColor=white)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/vivaidris/demo_cpp_site)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/vivaidris/demo_cpp_site?label=latest%20release)
 
 
 ## **Table of Contents**
